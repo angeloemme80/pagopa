@@ -29,7 +29,7 @@ public class MultiServer implements Runnable
         while (true) {
             String line;
             try {
-                while ((line = in.readLine()) != null) {
+                while ((line = in.readLine()) != null ) {
             		for (Socket soc : activeSockets) {
 						System.out.println(soc.toString());
 						PrintWriter allout = new PrintWriter(soc.getOutputStream(), true);
