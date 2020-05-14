@@ -7,24 +7,20 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class MultiServer implements Runnable
 {
     private Socket client;
-    public List<Socket> activeClients = new ArrayList<Socket>();
+    public List<Socket> activeSockets = new ArrayList<Socket>();
 
 	public MultiServer(Socket m){
-    	//System.out.println(m.toString());
         this.client = m;
     }
 
     @Override
     public void run(){
         BufferedReader in = null;
-        PrintWriter out = null;
         try {
-            out = new PrintWriter(client.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(client.getInputStream()));
         } catch(IOException ignored) {
         	System.out.println("ignored");
@@ -34,27 +30,27 @@ public class MultiServer implements Runnable
             String line;
             try {
                 while ((line = in.readLine()) != null) {
-            		//out.println(line);
-            		for (Socket soc : activeClients) {
+            		for (Socket soc : activeSockets) {
 						System.out.println(soc.toString());
 						PrintWriter allout = new PrintWriter(soc.getOutputStream(), true);
 						allout.println(line);
 					}
                 }
-            
             } catch (IOException e) {
                 System.out.println("Read Failed");
                 System.exit(-1);
             }
         }
     }
-    
-    public List<Socket> getActiveClients() {
-		return activeClients;
+
+	public List<Socket> getActiveSockets() {
+		return activeSockets;
 	}
 
-	public void setActiveClients(List<Socket> activeClients) {
-		this.activeClients = activeClients;
+	public void setActiveSockets(List<Socket> activeSockets) {
+		this.activeSockets = activeSockets;
 	}
+    
+    
 	
 }

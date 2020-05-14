@@ -8,7 +8,7 @@ import java.util.List;
 
 public class EchoServer {
 	
-	static List<Socket> activeClients = new ArrayList<Socket>();
+	static List<Socket> activeSockets = new ArrayList<Socket>();
 	static List<MultiServer> activeMultiServer = new ArrayList<MultiServer>();
 	
     public static void main(String[] args) throws IOException{
@@ -18,12 +18,12 @@ public class EchoServer {
             try {
             	Socket s = serverSocket.accept();
             	MultiServer multiServer = new MultiServer(s);
-            	activeClients.add(s);
-            	activeMultiServer.add(multiServer);
                 Thread t = new Thread(multiServer);
                 t.start();
+                activeSockets.add(s);
+            	activeMultiServer.add(multiServer);
                 for (MultiServer multi : activeMultiServer) {
-                	multi.setActiveClients(activeClients);
+                	multi.setActiveSockets(activeSockets);
 				}
             } catch(IOException e) {
                 System.out.println("Accept Failed:");
