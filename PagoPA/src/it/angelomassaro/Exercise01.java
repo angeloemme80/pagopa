@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PagoPA {
+public class Exercise01 {
 
 	public static void main(String[] args) {
-		PagoPA pagoPa = new PagoPA();
+		Exercise01 pagoPa = new Exercise01();
 		//Integer[] i = pagoPa.exrcise01(new Object[]{1, 2, 3, new Object[]{4,5}, 6, 7});
 		//Integer[] i = pagoPa.exrcise01(null);
 		//Integer[] i = pagoPa.exrcise01(new Object[]{1, 2, 3, new Object[]{4,5}, 6, 7, 8});
