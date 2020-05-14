@@ -19,16 +19,16 @@ public class Exercise01 {
 		
 		if (arrayOfArray == null) return null;
 		List<Integer> returnList = new ArrayList<Integer>();
-        for (Object obj : arrayOfArray) {
-            if (obj instanceof Integer) {
-            	returnList.add((Integer) obj);
-            } else if (obj instanceof Object[]) {
-            	returnList.addAll(Arrays.asList(exrcise01((Object[]) obj)));
-            } else {
-                throw new IllegalArgumentException("Input must be an integer array or an array of integer arrays");
-            }
-        }
-        return returnList.toArray(new Integer[returnList.size()]);
+		for (Object obj : arrayOfArray) {
+		    if (obj instanceof Integer) {
+		    	returnList.add((Integer) obj);
+		    } else if (obj instanceof Object[]) {
+		    	returnList.addAll(Arrays.asList(exrcise01((Object[]) obj)));
+		    } else {
+		        throw new IllegalArgumentException("Input must be an integer array or an array of integer arrays");
+		    }
+		}
+		return returnList.toArray(new Integer[returnList.size()]);
 		
 	}
 	
