@@ -11,7 +11,7 @@ import java.util.List;
 public class MultiServer implements Runnable
 {
     private Socket client;
-    public List<Socket> activeSockets = new ArrayList<Socket>();
+    private List<Socket> activeSockets = new ArrayList<Socket>();
 
 	public MultiServer(Socket m){
         this.client = m;
